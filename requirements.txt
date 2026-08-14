@@ -1,0 +1,16 @@
+# psi_g certification pipeline -- CPU reproduction environment (Python 3.12.0).
+# These pin the CPU certification path: certify.py + every m*/M*/R050 recompute script + reproduce.py.
+# Verified on the environment that produced the released artifacts (2026-07); scipy provides the
+# exact Clopper-Pearson / binomial tails, scikit-learn only the AUROC used to lock score orientation.
+#
+#   python -m venv .venv && . .venv/bin/activate && pip install -r requirements.txt
+#   python reproduce.py            # verify checksums + headline numbers  (seconds)
+#   python reproduce.py --recompute # also regenerate from the released scores (CPU-minutes)
+#
+numpy==1.26.4
+scipy==1.16.3
+scikit-learn==1.7.2
+#
+# NOT required to reproduce the certified numbers from the released score CSVs. Only needed to
+# REGENERATE the raw scores from model outputs (GPU): vllm==0.22.1 (+ the 5 environment fixes noted
+# in the paper's Supplementary reproducibility section) and transformers; see REPRODUCE.md.

@@ -1,0 +1,31 @@
+# Files listed in RESULT_SHA256SUMS.txt that are NOT part of the public release.
+#
+# RESULT_SHA256SUMS.txt is an integrity manifest over every result the analysis
+# produced, including files that cannot be redistributed. This file records which
+# of those entries are withheld and why, so `reproduce.py` can skip them instead
+# of reporting them as corrupted, and so a reader can see exactly what is missing.
+#
+# Nothing in the reproduction path reads these files: layers 1-3 of reproduce.py
+# reproduce every headline number from the published artifacts alone.
+#
+# One entry per line, path relative to the package root.
+
+# [MedHalu] request-gated corpus; raw data must not be redistributed
+#     (MedHalu ethical-use term 3). Obtain the corpus from its distributors and
+#     regenerate with score_generic.py + m3_combined.py.
+data/scores/scores_medhalu.csv
+data/scores/scores_medhalu_meta.json
+results/m3_medhalu_results.json
+
+# [B4] MedHallu clinician blind sheets, filled sheets and unblinding keys:
+#     answer-bearing, and they carry an annotator_id column and raw scores.
+#     Analyst-only, available from the authors under a data-use agreement. The
+#     de-identified, key-free reproduction of every clinician-derived number in
+#     the paper is published under adjudication/.
+results/B4_blind_sheet.csv
+results/B4_key.csv
+results/B4_sheet_annotator1.csv
+results/B4_sheet_annotator1_FILLED.csv
+results/B4_sheet_annotator2.csv
+results/B4_sheet_annotator2_FILLED.csv
+results/B4_sheet_gpt55.csv
